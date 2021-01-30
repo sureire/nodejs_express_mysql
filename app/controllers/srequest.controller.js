@@ -93,7 +93,7 @@ exports.findbyStatus = (req, res) => {
   };
 
   exports.bookinglist = (req, res) => {
-    SRequest.bookinglist((err, data) => {
+    SRequest.bookinglist(req.params.providerid, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({

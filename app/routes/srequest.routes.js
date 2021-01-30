@@ -11,7 +11,7 @@ module.exports = app => {
 
     app.get("/srequest_user/:userid", srequest.findbyUserid);
 
-    app.get("/srequest_bookinglist", srequest.bookinglist);
+    app.get("/srequest_bookinglist/:providerid", srequest.bookinglist);
 
     app.put("/srequest/:id", srequest.Update);
 

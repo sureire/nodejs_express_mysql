@@ -79,8 +79,8 @@ SRequest.findbyUserid = (userid, result) => {
     });
 };
 
-SRequest.bookinglist = result => {
-    sql.query("select * from bookinglist", (err,res) => {
+SRequest.bookinglist = (providerid, result) => {
+    sql.query(`call bookinglist(${providerid})`, (err,res) => {
         if (err) {
             result(err,null);
             console.log(err);
@@ -97,7 +97,7 @@ SRequest.bookinglist = result => {
 
 SRequest.Update = (id, request, result) => {
     console.log(`update servicerequest set serviceprovider = ${request.serviceprovider} and status = '${request.status}' where id = ${id}`);
-    sql.query(`update servicerequest set serviceprovider = ${request.serviceprovider} and status = '${request.status}' where id = ${id}`, (err, res) => {
+    sql.query(`update servicerequest set serviceprovider = ${request.serviceprovider}, status = '${request.status}' where id = ${id}`, (err, res) => {
         if (err) {
             result(err,null);
             return;

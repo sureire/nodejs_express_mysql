@@ -1,6 +1,6 @@
 module.exports = {
-  HOST: "35.197.64.43",
-  USER: "testuser",
-  PASSWORD: "",
+  HOST: "104.196.229.127",
+  USER: "appuser",
+  PASSWORD: "apppwd",
   DB: "vplusu"
 };
