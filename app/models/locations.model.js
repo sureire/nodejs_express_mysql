@@ -52,7 +52,7 @@ Location.getAll = result => {
 };
 
 Location.getcities = result => {
-  sql.query("SELECT distinct city FROM location", (err, res) => {
+  sql.query("SELECT distinct city as name FROM location", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -95,7 +95,7 @@ Location.remove = (city, result) => {
       return;
     }
 
-    console.log("deleted location with city: ", mobile);
+    console.log("deleted location with city: ", city);
     result(null, res);
   });
 };

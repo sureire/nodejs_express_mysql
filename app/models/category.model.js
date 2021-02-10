@@ -20,7 +20,7 @@ Category.create = (newCategory, result) => {
 };
 
 Category.findcategory = result => {
-  sql.query(`SELECT distinct category FROM servicecategory`, (err, res) => {
+  sql.query(`SELECT distinct category as name FROM servicecategory`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
@@ -73,6 +73,25 @@ Category.findAllSubcategory = result => {
   
       // not found User with the id
       result({ kind: "not_found" }, null);
+    });
+  };
+
+  Category.remove = (category, result) => {
+    sql.query("DELETE FROM servicecategory WHERE category = ?", category, (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+  
+      if (res.affectedRows == 0) {
+        // not found User with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+  
+      console.log("deleted category : ", category);
+      result(null, res);
     });
   };
 

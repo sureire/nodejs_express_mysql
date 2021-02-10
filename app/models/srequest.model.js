@@ -104,6 +104,19 @@ SRequest.Update = (id, request, result) => {
         }
         result(null,res);
     });
+    let values = 
+        {
+        requestid: id,
+        status: request.status,
+        statusdescription: request.statusdescription ? request.statusdescription : request.status
+        };
+        console.log(values);
+    sql.query("insert into servicestatus set ?", values, (err,data) => {
+        if (err){
+            console.log(err);
+        }
+    });
+
 };
 
 module.exports = SRequest;

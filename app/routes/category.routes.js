@@ -12,5 +12,7 @@ module.exports = app => {
   
     app.get("/subcategories/:category", category.findSubcategory);
 
+    app.delete("/servicecategory/:category", category.delete);
+
   };
   

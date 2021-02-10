@@ -72,7 +72,7 @@ Services.findServicebyLocation = (location, result) => {
 };
 
 Services.findServicebyLoc_cat = (location, category,result) => {
-    sql.query(`select * from services where location = '${location}' and category = '${category}'`, (err,res) => {
+    sql.query(`select * from services where location = '${location}' and (category = '${category}' or name = '${category}')`, (err,res) => {
         if (err) {
             console.log("error: ", err);
             result(err,null);

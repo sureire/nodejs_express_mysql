@@ -10,4 +10,5 @@ module.exports = app => {
     // Retrieve a single Customer with customerId
     app.get("/areas/:city", location.AllAreas);
   
+    app.delete("/location/:city", location.delete);
   };

@@ -23,7 +23,8 @@ require("./app/routes/category.routes.js")(app);
 require("./app/routes/provider.routes.js")(app);
 require("./app/routes/service.routes.js")(app);
 require("./app/routes/srequest.routes.js")(app);
-
+require("./app/routes/wallet.routes.js")(app);
+require("./app/routes/status.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

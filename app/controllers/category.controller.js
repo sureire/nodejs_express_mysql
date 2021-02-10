@@ -63,3 +63,19 @@ exports.create = (req, res) => {
       } else res.send(data);
     });
   };
+
+  exports.delete = (req, res) => {
+    Category.remove(req.params.category, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found servicecategory with category ${req.params.category}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Could not delete servicecategory with category " + req.params.category
+          });
+        }
+      } else res.send({ message: `servicecategory was deleted successfully!` });
+    });
+  };

@@ -38,6 +38,22 @@ exports.create = (req, res) => {
     });
   };
 
+  exports.delete = (req, res) => {
+    Location.remove(req.params.city, (err, data) => {
+      if (err) {
+        if (err.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found location with city ${req.params.city}.`
+          });
+        } else {
+          res.status(500).send({
+            message: "Could not delete location with city " + req.params.city
+          });
+        }
+      } else res.send({ message: `location was deleted successfully!` });
+    });
+  };
+
   exports.AllAreas = (req, res) => {
     Location.getarea(req.params.city, (err, data) => {
         if (err) {
