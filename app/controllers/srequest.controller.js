@@ -10,7 +10,8 @@ exports.create =  (req,res) => {
 
     const srequest = new SRequest({
     userid: req.body.userid,
-    serviceid: req.body.serviceid,
+    category: req.body.category,
+    location: req.body.location,
     requestdate: req.body.requestdate,
     status: req.body.status,
     preferedtimeslot: req.body.preferedtimeslot,
