@@ -2,7 +2,8 @@ const sql = require("./db.js");
 
 const SRequest = function(request){
     this.userid = request.userid;
-    this.serviceid = request.serviceid;
+    this.category = request.category;
+    this.location = request.location;
     this.requestdate = request.requestdate;
     this.status = request.status;
     this.preferedtimeslot = request.preferedtimeslot;
@@ -65,7 +66,7 @@ SRequest.findbyService = (serviceid, result) => {
 };
 
 SRequest.findbyUserid = (userid, result) => {
-    sql.query(`select a.id, name, date_format(requestdate,'%y-%m-%d') requestdate, status, preferedtimeslot,emergency from servicerequest a, services b where a.serviceid = b.id and userid = ${userid}`, (err,res) => {
+    sql.query(`select id, category,location, date_format(requestdate,'%y-%m-%d') requestdate, status, preferedtimeslot,emergency from servicerequest a, services b where userid = ${userid}`, (err,res) => {
         if (err) {
             result(err,null);
             return;
