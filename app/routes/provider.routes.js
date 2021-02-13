@@ -36,7 +36,7 @@ module.exports = app => {
           });
         }
         else 
-            res.status(200).send(data);        
+            res.status(200).send(data[0]);        
       });
     });
 
