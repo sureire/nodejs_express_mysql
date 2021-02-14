@@ -97,19 +97,21 @@ SRequest.bookinglist = (providerid, result) => {
 };
 
 SRequest.Update = (id, request, result) => {
-    console.log(`update servicerequest set serviceprovider = ${request.serviceprovider} and status = '${request.status}' where id = ${id}`);
-    sql.query(`update servicerequest set serviceprovider = ${request.serviceprovider}, status = '${request.status}' where id = ${id}`, (err, res) => {
+    let sts = request.status.split(':');
+    console.log(`update servicerequest set serviceprovider = ${request.serviceprovider} and status = '${sts[0]}' where id = ${id}`);
+    sql.query(`update servicerequest set serviceprovider = ${request.serviceprovider}, status = '${sts[0]}' where id = ${id}`, (err, res) => {
         if (err) {
             result(err,null);
             return;
         }
         result(null,res);
     });
+
     let values = 
         {
         requestid: id,
-        status: request.status,
-        statusdescription: request.statusdescription ? request.statusdescription : request.status
+        status: sts[0],
+        statusdescription: sts[1]
         };
         console.log(values);
     sql.query("insert into servicestatus set ?", values, (err,data) => {
