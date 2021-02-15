@@ -9,6 +9,8 @@ const SRequest = function(request){
     this.preferedtimeslot = request.preferedtimeslot;
     this.emergency = request.emergency;
     this.serviceprovider = request.serviceprovider;
+    this.createdby = request.createdby;
+    this.description = request.description;
 }
 
 SRequest.create = (newRequest, result) => {

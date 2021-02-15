@@ -5,6 +5,7 @@ const User = function(user) {
   this.email = user.email;
   this.name = user.name;
   this.mobile = user.mobile;
+  this.usertype = user.usertype;
 };
 
 User.create = (newUser, result) => {

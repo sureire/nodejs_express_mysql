@@ -15,7 +15,10 @@ exports.create =  (req,res) => {
     requestdate: req.body.requestdate,
     status: req.body.status,
     preferedtimeslot: req.body.preferedtimeslot,
-    emergency: req.body.emergency
+    emergency: req.body.emergency,
+    serviceprovider: req.body.serviceprovider,
+    createdby: req.body.createdby,
+    description: req.body.description
     });
 
     SRequest.create(srequest, (err,data) => {

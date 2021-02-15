@@ -31,4 +31,20 @@ module.exports = app => {
         });
       });
 
+      app.get("/dealersr/:id", (req,res) => {
+          console.log(req.params.id)
+        let sql = "select a.id, name, category,location, date_format(requestdate,'%y-%m-%d') requestdate, status, preferedtimeslot,emergency from servicerequest a, users b "
+                    + `where a.userid = b.id and a.createdby = ${req.params.id}`;
+        db.query(sql, (err, data) => {
+          if (err){
+            console.log(err);
+            res.status(500).send({
+                message: 'Error getting dealersr..'
+            });
+          }
+          else 
+              res.status(200).send(data);        
+        });
+      });
+
 };
