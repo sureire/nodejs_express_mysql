@@ -68,7 +68,7 @@ SRequest.findbyService = (serviceid, result) => {
 };
 
 SRequest.findbyUserid = (userid, result) => {
-    sql.query(`select id, category,location, date_format(requestdate,'%y-%m-%d') requestdate, status, preferedtimeslot,emergency from servicerequest where userid = ${userid}`, (err,res) => {
+    sql.query(`call userserviceslist(${userid})`, (err,res) => {
         if (err) {
             result(err,null);
             return;

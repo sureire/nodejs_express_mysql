@@ -92,7 +92,7 @@ exports.findbyStatus = (req, res) => {
             message: "Error retrieving for serviceid. " + req.params.userid
           });
         }
-      } else res.send(data);
+      } else res.send(data[0]);
     });
   };
 
