@@ -26,6 +26,7 @@ require("./app/routes/srequest.routes.js")(app);
 require("./app/routes/wallet.routes.js")(app);
 require("./app/routes/status.routes.js")(app);
 require("./app/routes/admin.routes.js")(app);
+require("./app/routes/razorpay.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
