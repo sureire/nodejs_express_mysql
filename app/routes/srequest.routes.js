@@ -16,6 +16,10 @@ module.exports = app => {
 
     app.put("/srequest/:id", srequest.Update);
 
+    app.put("/sreqreset/:id", (req, res) => {
+        let sql = `update servicerequest set status = `
+    } );
+
     app.get("/cancelledreq", (req,res) => {
         let sql = "select a.id, b.name Engineer, a.category, a.location, d.name CustomerName, c.statusdescription CancelReason, b.id engineerid, walletbalance from servicerequest a, provider b, servicestatus c, users d" + 
                 " where a.serviceprovider = b.id and a.id= c.requestid and a.userid= d.id and a.status = 'cancelling' and c.status = 'cancelling'";

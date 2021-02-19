@@ -56,7 +56,8 @@ module.exports = app => {
 
     app.put("/provider_activate", (req,res) => {
       console.log(req.body);
-      let sql = `update provider set active = 1 where id = ${req.body.id}`;
+      let sql = `update provider set active = ${req.body.active} where id = ${req.body.id}`;
+      console.log(sql);
       db.query(sql, (err, data) => {
         if (err){
           console.log(err);

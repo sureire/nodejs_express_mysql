@@ -41,7 +41,7 @@ Provider.create = (newProvider, result) => {
   
 
   Provider.getAll = result => {
-    sql.query("SELECT * FROM provider where active = 1", (err, res) => {
+    sql.query("SELECT * FROM provider", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
