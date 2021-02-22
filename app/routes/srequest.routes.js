@@ -50,4 +50,20 @@ module.exports = app => {
         });
       });
 
+      app.get("/srequestdupcheck/:userid/:location/:category", (req,res) => {
+        let sql = `select count(*) cnt from servicerequest where userid = ${req.params.userid} and location = '${req.params.location}' and category = '${req.params.category}'`
+            sql += ` and status in ('pending','in progress','cancelling')`;
+        console.log(sql);
+        db.query(sql, (err, data) => {
+            if (err){
+                console.error(err);
+                res.status(500).send({
+                    message: 'Error in service request duplicate check'
+                });
+            }
+            else
+                res.status(200).send(data[0]);
+        });
+      });
+
 };

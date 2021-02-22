@@ -25,5 +25,20 @@ module.exports = app => {
             res.status(200).send(data);        
       });
     });
+
+    app.get("/servicedupcheck/:id/:location/:category", (req,res) => {
+      let sql = `select count(*) cnt from services where providerid = ${req.params.id} and location = '${req.params.location}' and category = '${req.params.category}'`;
+      console.log(sql);
+      db.query(sql, (err, data) => {
+          if (err){
+              console.error(err);
+              res.status(500).send({
+                  message: 'Error in service duplicate check'
+              });
+          }
+          else
+              res.status(200).send(data[0]);
+      });
+    });
   
   };
