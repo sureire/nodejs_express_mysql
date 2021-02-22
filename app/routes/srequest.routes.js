@@ -66,4 +66,31 @@ module.exports = app => {
         });
       });
 
+      app.get("/opencalls/:id", (req,res) => {
+        let sql = `select count(*) cnt from servicerequest where serviceprovider = ${req.params.id} and status in ('in progress','cancelling')`;
+        db.query(sql, (err, data) => {
+            if (err){
+                console.error(err);
+                res.status(500).send({
+                    message: 'Error in getting opencalls..'
+                });
+            }
+            else
+                res.status(200).send(data[0]);
+        });
+      });
+
+      app.get("/totalserviceperday/:id",(req,res) => {
+          let sql = `call servicecountperday(${req.params.id})`;
+          db.query(sql, (err,data) => {
+            if (err){
+                console.error(err);
+                res.status(500).send({
+                    message: 'Error in getting totalserviceperday..'
+                });
+            }
+            else
+                res.status(200).send(data[0][0]);            
+          });
+      });
 };
