@@ -100,8 +100,8 @@ SRequest.bookinglist = (providerid, result) => {
 
 SRequest.Update = (id, request, result) => {
     let sts = request.status.split(':');
-    console.log(`update servicerequest set serviceprovider = ${request.serviceprovider} and status = '${sts[0]}' where id = ${id}`);
-    sql.query(`update servicerequest set serviceprovider = ${request.serviceprovider}, status = '${sts[0]}' where id = ${id}`, (err, res) => {
+    console.log(`update servicerequest set serviceprovider = ${request.serviceprovider}, status = '${sts[0]}' where id = ${id}`);
+    sql.query(`update servicerequest set serviceprovider = ${request.serviceprovider}, status = '${sts[0]}', statusdate = CURRENT_TIME() where id = ${id}`, (err, res) => {
         if (err) {
             result(err,null);
             return;

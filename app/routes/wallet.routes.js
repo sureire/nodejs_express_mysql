@@ -7,7 +7,7 @@ module.exports = app => {
             {
             providerid: req.body.providerid,
             amount: req.body.amount,
-            transtype: 'add'
+            transtype: req.body.transtype
             };
         db.query(sql, values, (err,data) => {
             if (err){

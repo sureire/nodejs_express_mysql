@@ -16,9 +16,9 @@ module.exports = app => {
 
     app.put("/srequest/:id", srequest.Update);
 
-    app.put("/sreqreset/:id", (req, res) => {
-        let sql = `update servicerequest set status = `
-    } );
+    // app.put("/sreqreset/:id", (req, res) => {
+    //     let sql = `update servicerequest set status = `
+    // } );
 
     app.get("/cancelledreq", (req,res) => {
         let sql = "select a.id, b.name Engineer, a.category, a.location, d.name CustomerName, c.statusdescription CancelReason, b.id engineerid, walletbalance from servicerequest a, provider b, servicestatus c, users d" + 
@@ -93,4 +93,18 @@ module.exports = app => {
                 res.status(200).send(data[0][0]);            
           });
       });
+
+      app.get("/servicelist",(req,res) => {
+        let sql = `call servicerequest_all()`;
+        db.query(sql, (err,data) => {
+          if (err){
+              console.error(err);
+              res.status(500).send({
+                  message: 'Error in getting servicerequest_all..'
+              });
+          }
+          else
+              res.status(200).send(data[0]);            
+        });
+    });
 };
