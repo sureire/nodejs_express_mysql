@@ -12,7 +12,8 @@ exports.create = (req, res) => {
     const provider = new Provider({
       email: req.body.email,
       name: req.body.name,
-      mobile: req.body.mobile
+      mobile: req.body.mobile,
+      address: req.body.address
     });
   
     // Save Provider in the database

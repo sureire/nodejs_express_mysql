@@ -107,4 +107,23 @@ module.exports = app => {
               res.status(200).send(data[0]);            
         });
     });
+
+    app.get("/servicereport/:fromdate/:todate/:status/:city/:dealer",(req,res) => {
+        let sql = `call servicereport('${req.params.fromdate}','${req.params.todate}'`;
+        sql += req.params.status == 'null'? `,null`: `,'${req.params.status}'`;
+        sql += req.params.city == 'null'? `,null`: `,'${req.params.city}'`;
+        sql += req.params.dealer == 'null'? `,null`: `,'${req.params.dealer}'`;
+        sql += ')';
+        console.log(sql);
+        db.query(sql, (err,data) => {
+          if (err){
+              console.error(err);
+              res.status(500).send({
+                  message: 'Error in getting servicereport..'
+              });
+          }
+          else
+              res.status(200).send(data[0]);            
+        });
+    });
 };

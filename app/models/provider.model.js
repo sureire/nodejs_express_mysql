@@ -5,6 +5,7 @@ const Provider = function(provider) {
   this.email = provider.email;
   this.name = provider.name;
   this.mobile = provider.mobile;
+  this.address = provider.address;
 };
 
 Provider.create = (newProvider, result) => {

@@ -42,7 +42,7 @@ User.findByMobile = (mobile, result) => {
 };
 
 User.getAll = result => {
-  sql.query("SELECT * FROM Users", (err, res) => {
+  sql.query("SELECT * FROM users", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -56,7 +56,7 @@ User.getAll = result => {
 
 
 User.remove = (mobile, result) => {
-  sql.query("DELETE FROM Users WHERE mobile = ?", mobile, (err, res) => {
+  sql.query("DELETE FROM users WHERE mobile = ?", mobile, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
