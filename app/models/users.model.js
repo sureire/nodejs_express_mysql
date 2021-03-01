@@ -42,7 +42,7 @@ User.findByMobile = (mobile, result) => {
 };
 
 User.getAll = result => {
-  sql.query("SELECT * FROM users", (err, res) => {
+  sql.query("SELECT * FROM users where usertype = 1", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

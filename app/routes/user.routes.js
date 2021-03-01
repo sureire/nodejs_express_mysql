@@ -21,7 +21,7 @@ module.exports = app => {
 
     //get all the dealers
     app.get("/dealerlist",(req,res) => {
-      let sql = 'select name from users where usertype = 2';
+      let sql = 'select * from users where usertype = 2';
       db.query(sql, (err,data) => {
         if (err){
             console.error(err);
