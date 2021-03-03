@@ -13,7 +13,7 @@ module.exports = app => {
     app.get("/serbyloccat/:location/:category", service.findServicebyLoc_cat);
 
     app.get("/allservices", (req,res) => {
-      let sql = 'select a.name servicename, a.category, a.location, b.name, b.mobile from services a, provider b where a.providerid = b.id';
+      let sql = 'select a.id, a.name servicename, a.category, a.location, b.name, b.mobile from services a, provider b where a.providerid = b.id';
       db.query(sql, (err, data) => {
         if (err){
           console.log(err);

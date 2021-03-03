@@ -21,7 +21,7 @@ module.exports = app => {
     // } );
 
     app.get("/cancelledreq", (req,res) => {
-        let sql = "select a.id, b.name Engineer, a.category, a.location, d.name CustomerName, c.statusdescription CancelReason, b.id engineerid, walletbalance from servicerequest a, provider b, servicestatus c, users d" + 
+        let sql = "select a.id, b.name Engineer, a.category, a.location, d.name CustomerName, c.statusdescription CancelReason, b.id engineerid, '0' as refund, walletbalance from servicerequest a, provider b, servicestatus c, users d" + 
                 " where a.serviceprovider = b.id and a.id= c.requestid and a.userid= d.id and a.status = 'cancelling' and c.status = 'cancelling'";
         db.query(sql, (err, data) => {
           if (err){
