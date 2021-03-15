@@ -54,7 +54,7 @@ SRequest.findbyProvider = (Providerid, result) => {
 };
 
 SRequest.findbyService = (serviceid, result) => {
-    sql.query(`select * from servicerequest where serviceid = ${serviceid}`, (err,res) => {
+    sql.query(`select a.*,b.name,b.mobile from servicerequest a, users b where a.userid = b.id and a.id = ${serviceid}`, (err,res) => {
         if (err) {
             result(err,null);
             return;

@@ -17,7 +17,7 @@ module.exports = app => {
     });
 
     app.get('/settings', (req, res) => {
-        let sql = `select * from settings`;
+        let sql = `select * from settings where id > 1`;
         db.query(sql, (err,data) => {
             if (err){
                 console.log(err);
@@ -29,6 +29,20 @@ module.exports = app => {
                 res.status(200).send(data);
         });
        
+    });
+
+    app.put('/setting/:id', (req,res) => {
+        let sql = `update settings set value = '${req.body.value}' where id = ${req.body.id}`;
+        db.query(sql, (err,data) => {
+            if (err){
+                console.log(err);
+                res.status(500).send({
+                    message: 'Error updating settings...'
+                });
+            }
+            else 
+                res.status(200).send(data);
+        });
     });
 
 };

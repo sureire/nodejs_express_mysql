@@ -8,7 +8,7 @@ module.exports = app => {
   
     app.get("/srequest/:providerid", srequest.findbyProvider);
 
-    app.get("/srequest/:serviceid", srequest.findbyService);
+    app.get("/srequest_byid/:serviceid", srequest.findbyService);
 
     app.get("/srequest_user/:userid", srequest.findbyUserid);
 
