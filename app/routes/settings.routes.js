@@ -17,7 +17,7 @@ module.exports = app => {
     });
 
     app.get('/settings', (req, res) => {
-        let sql = `select * from settings where id > 1`;
+        let sql = `select * from settings`;
         db.query(sql, (err,data) => {
             if (err){
                 console.log(err);

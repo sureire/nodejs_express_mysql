@@ -126,4 +126,20 @@ module.exports = app => {
               res.status(200).send(data[0]);            
         });
     });
+
+    app.put("/service_feedback", (req,res) => {
+        console.log(req.body);
+        let sql = `update servicerequest set ratings = ${req.body.ratings}, feedback = '${req.body.feedback}' where id = ${req.body.id}`;
+        console.log(sql);
+        db.query(sql, (err, data) => {
+          if (err){
+            console.log(err);
+            res.status(500).send({
+                message: 'Error updating feedback..'
+            });
+          }
+          else 
+              res.status(200).send(data);        
+        });
+      });
 };
