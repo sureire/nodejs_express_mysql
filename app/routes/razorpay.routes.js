@@ -3,12 +3,13 @@ module.exports = app => {
     const Razorpay = require("razorpay");
     let crypto = require('crypto');
     const { v1: uuidv1 } = require('uuid');
-    const ksecret = 'BxHSoL8VJz3UQudYckOIRLQt';
+    //const ksecret = 'BxHSoL8VJz3UQudYckOIRLQt';
+    const ksecret = 'TpL3zQTNogH61qeFISu79xew';
 
     app.post('/createPayment', (req, res) => {
 
         let instance = new Razorpay({
-            key_id: "rzp_test_u2D4dnRU0hFi9j",
+            key_id: "rzp_live_Kx88P4l4ZHaqry",
             key_secret: ksecret
         });
         console.log(req.body);
