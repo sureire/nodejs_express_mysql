@@ -55,7 +55,7 @@ Services.findServicebyCategory = (category, result) => {
 };
 
 Services.findServicebyLocation = (location, result) => {
-    sql.query(`select * from services where location = '${location}'`, (err,res) => {
+    sql.query(`select distinct category from services where location = '${location}'`, (err,res) => {
         if (err) {
             console.log("error: ", err);
             result(err,null);
