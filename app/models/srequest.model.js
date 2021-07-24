@@ -113,7 +113,8 @@ SRequest.Update = (id, request, result) => {
         {
         requestid: id,
         status: sts[0],
-        statusdescription: sts[1]
+        statusdescription: sts[1],
+        engineerid: request.serviceprovider
         };
         console.log(values);
     sql.query("insert into servicestatus set ?", values, (err,data) => {

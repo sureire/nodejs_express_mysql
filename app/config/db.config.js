@@ -3,4 +3,9 @@ module.exports = {
   USER: "dbuser",
   PASSWORD: "dbVplusU@21",
   DB: "vplusu"
+  // HOST: "localhost",
+  // USER: "dbuser",
+  // PASSWORD: "dbVplusU@21",
+  // DB: "vplusu"
+
 };

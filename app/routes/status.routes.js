@@ -7,7 +7,8 @@ module.exports = app => {
             {
             requestid: req.body.requestid,
             status: req.body.status,
-            statusdescription: req.body.statusdescription
+            statusdescription: req.body.statusdescription,
+            engineerid:req.body.engineerid
             };
         db.query(sql, values, (err,data) => {
             if (err){
