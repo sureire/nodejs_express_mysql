@@ -28,7 +28,7 @@ Category.findcategory = result => {
     }
 
     if (res.length) {
-      console.log("found category: ", res);
+      //console.log("found category: ", res);
       result(null, res);
       return;
     }
@@ -47,7 +47,7 @@ Category.findAllSubcategory = result => {
       }
   
       if (res.length) {
-        console.log("found subcategories: ", res);
+        //console.log("found subcategories: ", res);
         result(null, res);
         return;
       }
@@ -77,7 +77,7 @@ Category.findAllSubcategory = result => {
   };
 
   Category.remove = (category, result) => {
-    sql.query("DELETE FROM servicecategory WHERE category = ?", category, (err, res) => {
+    sql.query("DELETE FROM servicecategory WHERE category = ?", encodeURIComponent(category), (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);

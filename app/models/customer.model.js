@@ -47,7 +47,7 @@ Customer.getAll = result => {
       return;
     }
 
-    console.log("customers: ", res);
+    //console.log("customers: ", res);
     result(null, res);
   });
 };

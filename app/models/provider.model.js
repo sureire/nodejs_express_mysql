@@ -49,7 +49,7 @@ Provider.create = (newProvider, result) => {
         return;
       }
   
-      console.log("Provider: ", res);
+      //console.log("Provider: ", res);
       result(null, res);
     });
   };

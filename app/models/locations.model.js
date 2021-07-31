@@ -59,7 +59,7 @@ Location.getcities = result => {
       return;
     }
 
-    console.log("Cities: ", res);
+    //console.log("Cities: ", res);
     result(null, res);
   });
 };
