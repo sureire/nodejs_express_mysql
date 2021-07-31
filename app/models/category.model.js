@@ -77,7 +77,7 @@ Category.findAllSubcategory = result => {
   };
 
   Category.remove = (category, result) => {
-    sql.query("DELETE FROM servicecategory WHERE category = ?", encodeURIComponent(category), (err, res) => {
+    sql.query("DELETE FROM servicecategory WHERE category = ?", decodeURIComponent(category), (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
